@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""fixture (session).
+"""fixtures.
 
 テストコードで使用するセッション開始時のテストフィクスチャ定義
 

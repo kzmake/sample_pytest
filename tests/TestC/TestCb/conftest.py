@@ -7,23 +7,13 @@
 
 import pytest
 
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
+from TestCb_fixtures import *
+
 
 def pytest_report_header(config):
     """ テストレポートヘッダ
     """
     return "サンプル テストCb"
-
-@pytest.fixture(scope='session')
-def e():
-    return 2
-
-
-@pytest.fixture(scope='session')
-def f():
-    return 2
-
-
-@pytest.fixture(scope='session')
-def ef(e, f):
-    return e * f
-

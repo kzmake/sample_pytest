@@ -6,15 +6,10 @@
 """
 
 import pytest
-
-import sys
-import os
-sys.path.append(os.path.dirname(__file__))
-from TestC_fixtures import *
+from fixtures import *
 
 
 def pytest_report_header(config):
     """ テストレポートヘッダ
     """
-    return "サンプル テストC"
-
+    return "サンプル テスト"
