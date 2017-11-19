@@ -2,7 +2,6 @@
 
 import pytest
 import time
-from parameterized import parameterized
 
 
 @pytest.fixture(scope='class', autouse=True)
@@ -40,17 +39,17 @@ class TestB(object):
         b = 2
         assert a + b == scope_function
 
-    def test_3(self, fixture_a, fixture_b, fixture_ab):
-        assert fixture_a + fixture_b == fixture_ab + 1
+    def test_3(self, a, b, ab):
+        assert a + b == ab + 1
 
     def test_4(self):
         time.sleep(10)
         assert True
 
-    @parameterized([
-        (2, 3, 4),
+    @pytest.mark.parametrize(['x', 'y', 'ans'], [
         (1, 1, 3),
-        (3, -1, 2),
+        (2, 2, 5),
+        (3, 3, 7),
     ])
-    def test_5(self, a, b, ans):
-        assert a + b == ans
+    def test_5(self, x, y, ans):
+        assert x + y == ans

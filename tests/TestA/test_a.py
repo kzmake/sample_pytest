@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from parameterized import parameterized
 
 
 @pytest.fixture(scope='class', autouse=True)
@@ -39,13 +38,13 @@ class TestA(object):
         b = 2
         assert a + b == scope_function
 
-    def test_3(self, fixture_a, fixture_b, fixture_ab):
-        assert fixture_a + fixture_b == fixture_ab
+    def test_3(self, a, b, ab):
+        assert a + b == ab
 
-    @parameterized([
-        (2, 3, 5),
-        (1, 1, 2),
-        (3, -1, 2),
+    @pytest.mark.parametrize(['x', 'y', 'ans'], [
+        (1, 1, 3),
+        (2, 2, 5),
+        (3, 3, 7),
     ])
-    def test_4(self, a, b, ans):
-        assert a + b == ans
+    def test_4(self, x, y, ans, a):
+        assert x + y + a == ans
